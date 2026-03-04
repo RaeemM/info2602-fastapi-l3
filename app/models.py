@@ -41,13 +41,13 @@ class Todo(SQLModel, table=True):
 
 
 
-    ## Task 3.2 implementation should go here as well. Modify the class like you did for 3.1 above
-
-    ## Task 3.4 implementation should go here as well
-
-    # Task 5.2 code should go here
+class TodoCategory(SQLModel, table=True):
+    todo_id: int|None = Field(primary_key=True, foreign_key='todo.id')
+    category_id: int|None = Field(primary_key=True, foreign_key='category.id')
     
-    
-# class Category(SQLModel, table=True):
-#     # Implementation of the Category model from task 5.1 here
-#     pass
+class Category(SQLModel, table=True):
+    id: Optional[int] =  Field(default=None, primary_key=True)
+    user_id: int = Field(foreign_key='user.id') #set user_id as a foreign key to user.id 
+    text: str = Field(max_length=255)
+
+    todos: list['Todo'] = Relationship(back_populates=("categories"), link_model=TodoCategory)
