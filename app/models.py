@@ -20,9 +20,9 @@ class User(SQLModel, table=True):
     def __str__(self) -> str:
         return f"(User id={self.id}, username={self.username} ,email={self.email})"
 
-class TodoCategory(SQLModel, table=True):
-    # Implementation of the TodoCategory model from task 5.1 here
-    pass
+# class TodoCategory(SQLModel, table=True):
+#     # Implementation of the TodoCategory model from task 5.1 here
+#     pass
 
 
 class Todo(SQLModel, table=True):
@@ -36,6 +36,6 @@ class Todo(SQLModel, table=True):
     # Task 5.2 code should go here
     
     
-class Category(SQLModel, table=True):
-    # Implementation of the Category model from task 5.1 here
-    pass
+# class Category(SQLModel, table=True):
+#     # Implementation of the Category model from task 5.1 here
+#     pass
