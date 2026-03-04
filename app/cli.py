@@ -138,5 +138,14 @@ def delete_todo(todo_id:int):
         db.delete(todo)
         db.commit()
 
+@cli.command()
+def set_done(user_id: int):
+    with get_session() as db:
+        todos = db.exec(select(Todo).where(Todo.user_id == user_id)).all()
+
+        for todo in todos:
+            todo.done = True
+            db.add(todo)
+            db.commit()
 if __name__ == "__main__":
     cli()
