@@ -36,6 +36,9 @@ class Todo(SQLModel, table=True):
 
     user: User = Relationship(back_populates="todos")
 
+    def toggle(self):
+        self.done = not self.done
+
 
 
     ## Task 3.2 implementation should go here as well. Modify the class like you did for 3.1 above
