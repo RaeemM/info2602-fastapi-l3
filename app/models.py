@@ -32,6 +32,7 @@ class Todo(SQLModel, table=True):
     user_id: int = Field(foreign_key='user.id') #set user_id as a foreign key to user.id 
     text: str = Field(max_length=255)
     done: bool = Field(default=False)
+    categories: list['Category'] = Relationship(back_populates=("todos"), link_model=TodoCategory)
     # done: bool = False  # <---- can also be written this way if you prefer a pythonic default
 
     user: User = Relationship(back_populates="todos")
