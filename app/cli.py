@@ -122,6 +122,13 @@ def assign_category_to_todo(username:str, todo_id:int, category_text:str):
         db.commit()
         print("Added category to todo")
 
+@cli.command()
+def list_all_todos():
+    with get_session() as db:
+        todo_list = db.exec(select(Todo)).all()
+
+        for todo in todo_list:
+            print(f"ID: {todo.id}, Text: {todo.text}, Username: {todo.user.username}, Staus: {todo.done}")
 
 if __name__ == "__main__":
     cli()
