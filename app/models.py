@@ -10,6 +10,8 @@ class User(SQLModel, table=True):
     email:str = Field(index=True, unique=True)
     password:str
 
+    todos: list['Todo'] = Relationship(back_populates="user")
+
     ## Task 3.1 code should go here (special care should go into the indentation)
 
     ## End of task 3.1 code
@@ -34,6 +36,8 @@ class Todo(SQLModel, table=True):
 
     def toggle(self):
         self.done = not self.done
+
+
 
     ## Task 3.2 implementation should go here as well. Modify the class like you did for 3.1 above
 
