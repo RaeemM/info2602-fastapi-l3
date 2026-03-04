@@ -130,5 +130,13 @@ def list_all_todos():
         for todo in todo_list:
             print(f"ID: {todo.id}, Text: {todo.text}, Username: {todo.user.username}, Staus: {todo.done}")
 
+@cli.command()
+def delete_todo(todo_id:int):
+    with get_session() as db:
+        todo = db.get(Todo, todo_id)
+
+        db.delete(todo)
+        db.commit()
+
 if __name__ == "__main__":
     cli()
