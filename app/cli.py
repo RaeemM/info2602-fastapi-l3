@@ -1,6 +1,6 @@
 import typer
 from app.database import create_db_and_tables, get_session, drop_all
-from app.models import User, Todo
+from app.models import User, Todo, Category, TodoCategory
 from fastapi import Depends
 from sqlmodel import select
 from sqlalchemy.exc import IntegrityError
